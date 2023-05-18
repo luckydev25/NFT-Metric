@@ -2,12 +2,7 @@ import API_BASE_URL from "./config";
 
 export const getNFTData = async () => {
     const response = await fetch(`${API_BASE_URL}/market/getNFTData`, {
-        method: 'GET',
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT',
-            'Content-Type': 'application/json'
-        }
+        method: 'GET'
     });
     
     const data = await response.json();
