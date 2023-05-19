@@ -2,24 +2,18 @@ import API_BASE_URL from "./config";
 import axios from 'axios';
 
 export const getNFTData = async () => {
-    const response = await axios.get(`${API_BASE_URL}/market/getNFTData`, {
-        headers: {
-            "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-            "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-        }
-    })
-    // console.log(response.data);
-    // const response = await fetch(`${API_BASE_URL}/market/getNFTData`, {
-    //     method: 'GET',
+    // const response = await axios.get(`${API_BASE_URL}/market/getNFTData`, {
     //     headers: {
     //         "Access-Control-Allow-Credentials": true,
     //         "Access-Control-Allow-Origin": "*",
     //         "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
     //         "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
     //     }
-    // });
+    // })
+    // console.log(response.data);
+    const response = await fetch(`${API_BASE_URL}/market/getNFTData`, {
+        method: 'GET',
+    });
     
     const data = await response.json();
     return data;
