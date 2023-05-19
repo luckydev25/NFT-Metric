@@ -23,19 +23,19 @@ const OrderBook = () => {
     }, [selectedDate]);
 
     const fetchData = async (collectionID, date) => {
+        setLoading(true)
         const data = await getOrderBook(collectionID, date.code);
-        console.log("---------- fetchData ----------", data);
+        setLoading(false)
         return data;
     };
 
     const prepareChartData = () => {
-        console.log(orders);
         const buyOrders = orders.filter((order) => order.type === 'Bid');
         const sellOrders = orders.filter((order) => order.type === 'Sale');
     
         const buyOrderData = buyOrders.reduce((acc, order) => {
           const { price, hour } = order;
-          const key = `${price}-${hour}`;
+          const key = `${price}`;
     
           if (acc[key]) {
             acc[key] += 1; // Assuming 1 quantity per order, adjust accordingly
@@ -48,7 +48,7 @@ const OrderBook = () => {
     
         const sellOrderData = sellOrders.reduce((acc, order) => {
           const { price, hour } = order;
-          const key = `${price}-${hour}`;
+          const key = `${price}`;
     
           if (acc[key]) {
             acc[key] += 1; // Assuming 1 quantity per order, adjust accordingly
@@ -82,13 +82,32 @@ const OrderBook = () => {
 
       const chartOptions = {
         chart: {
-          type: 'bar',
+          type: 'area',
           height: 350,
         },
         series,
+        stroke: {
+            width: 1, // set the line width to 4
+            // curve: 'stepline',
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        colors: ["#a8d9af", "#ffaeb0"],
         xaxis: {
           categories: prices,
         },
+        yaxis: {
+            axisTicks: {
+                show: true
+            },
+            axisBorder: {
+                show: true,
+            },
+        }
       };
 
     const initialData = (marketData) => {
@@ -124,7 +143,7 @@ const OrderBook = () => {
             ],
             options: {
                 chart: {
-                    type: 'bar',
+                    type: 'area',
                     stacked: false,
                     height: 350,
                     zoom: {
@@ -183,10 +202,10 @@ const OrderBook = () => {
     return (
         <div className='mx-auto mt-24'>
             <div className='orderbook'>
-                {/* {loading ?
-                    <ProgressSpinner className='custom-spinner' strokeWidth="5" fill="var(--surface-ground)" animationDuration=".5s" /> : */}
-                    <ReactApexChart options={chartOptions} series={series} type="bar" height={350} />
-                {/* } */}
+                {loading ?
+                    <ProgressSpinner className='custom-spinner' strokeWidth="5" fill="var(--surface-ground)" animationDuration=".5s" /> :
+                    <ReactApexChart options={chartOptions} series={series} type="area" height={350} />
+                }
             </div>
         </div>
     )

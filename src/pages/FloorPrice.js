@@ -245,7 +245,7 @@ const FloorPrice = () => {
                 <PriceImpact />
             </div>
             <div>
-                {/* <OrderBook /> */}
+                <OrderBook />
             </div>
         </div>
     )
