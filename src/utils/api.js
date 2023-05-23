@@ -1,16 +1,6 @@
 import API_BASE_URL from "./config";
-import axios from 'axios';
 
 export const getNFTData = async () => {
-    // const response = await axios.get(`${API_BASE_URL}/market/getNFTData`, {
-    //     headers: {
-    //         "Access-Control-Allow-Credentials": true,
-    //         "Access-Control-Allow-Origin": "*",
-    //         "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-    //         "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    //     }
-    // })
-    // console.log(response.data);
     const response = await fetch(`${API_BASE_URL}/market/getNFTData`, {
         method: 'GET',
     });
@@ -70,13 +60,29 @@ export const getSpread = async (collectionID, date) => {
 export const getPriceImpact = async (collectionID, date) => {
     const response = await fetch(`${API_BASE_URL}/market/getPriceImpact/${collectionID}`, {
         method: 'GET'
-    });
+    }); 
     const data = await response.json();
     return data;
 };
 
 export const getOrderBook = async (collectionID, date) => {
     const response = await fetch(`${API_BASE_URL}/market/getOrderBook/${collectionID}`, {
+        method: 'GET'
+    });
+    const data = await response.json();
+    return data;
+};
+
+export const getBuyOrderBook = async (collectionID, date) => {
+    const response = await fetch(`${API_BASE_URL}/market/getBuyOrderBook/${collectionID}`, {
+        method: 'GET'
+    });
+    const data = await response.json();
+    return data;
+};
+
+export const getSellOrderBook = async (collectionID, date) => {
+    const response = await fetch(`${API_BASE_URL}/market/getSellOrderBook/${collectionID}`, {
         method: 'GET'
     });
     const data = await response.json();
