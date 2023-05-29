@@ -1,4 +1,4 @@
 // const API_BASE_URL = 'http://localhost:8080/api';
-const API_BASE_URL = 'https://626c-78-111-89-204.ngrok.io/api';
+const API_BASE_URL = 'https://0689-78-111-89-204.ngrok.io/api';
 
 export default API_BASE_URL;
