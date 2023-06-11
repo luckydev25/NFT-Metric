@@ -86,7 +86,7 @@ const Royalty = () => {
                     },
                     labels: {
                         formatter: function (val) {
-                            return parseInt(val);
+                            return val.toFixed(2);
                         }
                     }
                 },

@@ -107,7 +107,7 @@ const FloorPrice = () => {
                     },
                     labels: {
                         formatter: function (val) {
-                            return parseInt(val);
+                            return val.toFixed(2);
                         }
                     }
                 },
@@ -173,7 +173,7 @@ const FloorPrice = () => {
                     },
                     labels: {
                         formatter: function (val) {
-                            return parseInt(val);
+                            return val.toFixed(2);
                         }
                     }
                 },
@@ -245,7 +245,7 @@ const FloorPrice = () => {
                 <PriceImpact />
             </div>
             <div>
-                {/* <OrderBook /> */}
+                <OrderBook />
             </div>
         </div>
     )

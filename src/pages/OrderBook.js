@@ -34,7 +34,7 @@ const OrderBook = () => {
 
         for (let index = 0; index < marketData.buyOrderBook.length; index++) {
             const element = marketData.buyOrderBook[index];
-            prices.push(element.price/1000000000);
+            prices.push(element.price);
             b_series_data.push(element.buy_orders);
             s_series_data.push(null);
         }
@@ -42,7 +42,7 @@ const OrderBook = () => {
         const last_price = prices[prices.length - 1];
         for (let index = 0; index < marketData.sellOrderBook.length; index++) {
             const element = marketData.sellOrderBook[index];
-            prices.push(last_price + element.price/1000000000);
+            prices.push(last_price + element.price);
             s_series_data.push(element.sell_orders);
         }
 
